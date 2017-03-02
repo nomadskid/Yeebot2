@@ -5,7 +5,7 @@ var botID = process.env.BOT_ID;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/;
+      botRegex = /^yee$|^Yee$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
@@ -31,7 +31,13 @@ function postMessage() {
 
   body = {
     "bot_id" : botID,
-    "text" : botResponse
+    "text" : "Who said it?",
+    "attachments" : [
+    {
+      "type"  : "image",
+      "url"   : "http://i0.kym-cdn.com/entries/icons/original/000/016/362/tumblr_nb7jgq9kcR1slfxluo1_1280.jpg"
+    }
+  ]
   };
 
   console.log('sending ' + botResponse + ' to ' + botID);
